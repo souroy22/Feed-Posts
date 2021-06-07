@@ -1,6 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { PostContext } from "../../Context Api/Context";
 import Post from "../Post/Post";
+import AOS from "aos";
+import "aos/dist/aos.css";
+AOS.init();
 
 const Posts = ({ postsPerPage }) => {
   const [posts, setPosts, filterdPosts, setFilterdPosts] =
@@ -16,6 +19,9 @@ const Posts = ({ postsPerPage }) => {
         justifyContent: "center",
         flexWrap: "wrap",
       }}
+      data-aos="zoom-in-up"
+      data-aos-easing="ease-in-out"
+      data-aos-delay="250"
     >
       {postsPerPage?.map((post, index) => {
         return (

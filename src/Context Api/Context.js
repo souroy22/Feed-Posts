@@ -10,10 +10,15 @@ export const PostsProvider = (props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(async () => {
-    const data = await allPosts();
-    setPosts(data);
-    setFilterdPosts(data);
-    // setReload(false);
+    let feed;
+    if (localStorage.getItem("feed")) {
+      feed = JSON.parse(localStorage.getItem("feed"));
+    } else {
+      feed = await allPosts();
+      localStorage.setItem("feed", JSON.stringify(feed));
+    }
+    setPosts(feed);
+    setFilterdPosts(feed);
     setLoading(false);
   }, []);
 

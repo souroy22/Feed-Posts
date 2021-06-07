@@ -1,3 +1,13 @@
 .hoverEffect{
     cursor: pointer;
 }
+
+.acontainer{
+    background-color: #8D3DAF;
+    transition: all 0.3s ease-in-out;
+}
+
+.acontainer:hover{
+    background-color: #242B2E;
+    color: #8D3DAF;
+}
