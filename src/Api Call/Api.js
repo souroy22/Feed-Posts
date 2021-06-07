@@ -23,7 +23,3 @@ export const allPosts = async () => {
     console.error(error);
   }
 };
-
-export const getDataFromLocakStrorage = () => {
-
-}
