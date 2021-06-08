@@ -18,9 +18,12 @@ const Pagination = ({ dataPerPage, totalData, paginate, currentPage }) => {
     >
       <ul className="pagination">
         {pageNumbers.length > 1 &&
-          pageNumbers.map((number) => (
-            <li key={number} className="page-item hoverEffect  rounded m-2" >
-              <a onClick={() => paginate(number)} className="page-link acontainer text-light font-weight-bold" >
+          pageNumbers.map((number, index) => (
+            <li key={number + index} className="page-item hoverEffect m-2">
+              <a
+                onClick={() => paginate(number)}
+                className="page-link acontainer text-light font-weight-bold rounded-li"
+              >
                 {number}
               </a>
             </li>

@@ -7,6 +7,7 @@ import Loading from "./Components/Loading Screen/Loading";
 import DropDown from "./Components/DropDown Menu/DropDown";
 import { Offline, Online } from "react-detect-offline";
 
+
 const App = () => {
   const [posts, setPosts, filterdPosts, setFilterdPosts, reload, setReload] =
     useContext(PostContext);
@@ -26,10 +27,7 @@ const App = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-  const comapreByLike = (post1, post2) => {
-    console.log(post1, post2);
-    return post1.likes <= post2.likes;
-  };
+  
   const filtered = (type, updown = 1) => {
     if (type === "like") {
       setFilterdPosts(
@@ -79,6 +77,7 @@ const App = () => {
         />
       </Offline>
       <Online>
+      
         <DropDown filtered={filtered} sortIncDec={sortIncDec} />
         {!posts?.length ? (
           <Loading />

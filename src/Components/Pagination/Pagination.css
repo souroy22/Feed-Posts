@@ -11,3 +11,7 @@
     background-color: #242B2E;
     color: #8D3DAF;
 }
+
+.rounded-li{
+    border-radius: 15px;
+}

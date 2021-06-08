@@ -9,11 +9,24 @@ import {
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
 import Title from "react-vanilla-tilt";
+import Modal from "react-modal";
 
-const Post = ({ event_date, event_name, likes, shares, views, photoUrl }) => {
+const Post = ({
+  event_date,
+  event_name,
+  likes,
+  shares,
+  views,
+  photoUrl,
+  isOpen,
+  setIsOpen,
+  openModal,
+  post
+}) => {
   const toUpperCaseFilter = (d) => {
     return d.toUpperCase();
   };
+  
   return (
     <Title
       className="card container"
@@ -28,7 +41,7 @@ const Post = ({ event_date, event_name, likes, shares, views, photoUrl }) => {
       }}
       style={{
         width: "21rem",
-        height: "400px",
+        height: "450px",
         margin: "20px",
         borderRadius: "25px",
         padding: 0,
@@ -49,27 +62,27 @@ const Post = ({ event_date, event_name, likes, shares, views, photoUrl }) => {
         }}
       />
 
-      <div className="card-body">
-        <h5
-          className="card-title font-weight-bold"
-          style={{ textAlign: "center", color: "#8D3DAF" }}
+      <div className="card-body displayFlex">
+        <div className="card-body-left">
+          <h5
+            className="card-title font-weight-bold"
+            style={{ textAlign: "center", color: "#8D3DAF" }}
+          >
+            {event_name}
+          </h5>
+          <p className="card-text">
+            <Moment format="D MMM YYYY" filter={toUpperCaseFilter}>
+              {event_date}
+            </Moment>
+          </p>
+        </div>
+        <button
+          className="btn btn-sm btn-warning font-weight-bold card-body-right"
+          onClick={() => openModal(post)}
         >
-          {event_name}
-        </h5>
-        <p className="card-text">
-          <Moment format="D MMM YYYY" filter={toUpperCaseFilter}>
-            {event_date}
-          </Moment>
-        </p>
-        <div
-          style={{
-            margin: "auto",
-            padding: "0",
-            display: "flex",
-            justifyContent: "space-between",
-            overflow: "hidden",
-          }}
-        >
+          View
+        </button>
+        <div className="footer-container">
           <a
             className="btn"
             style={{ fontSize: "23px", minWidth: "33%", color: "gray" }}
