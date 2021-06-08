@@ -25,7 +25,10 @@ const ModalContainer = ({ isOpen, setIsOpen, post }) => {
       height: "350px",
       display: "flex",
       flexDirection: "row",
+      border: 0,
       borderRadius: "20px",
+      backgroundColor: "#38CC77",
+      boxShadow: "0 0 15px #38CC77"
     },
   };
 

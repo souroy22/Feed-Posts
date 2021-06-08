@@ -9,7 +9,7 @@ const DropDown = ({ filtered, sortIncDec }) => {
   const [filterBtnName, setFilterBtnName] = useState("Sort");
   const [sorting, setSorting] = useState(true);
   useEffect(() => {}, [sorting, filterBtnName]);
-  console.log(filterBtnName);
+  // console.log(filterBtnName);
   return (
     <div
       style={{ display: "flex", justifyContent: "flex-end", padding: "0 60px" }}

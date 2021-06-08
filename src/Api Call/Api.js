@@ -15,9 +15,7 @@ export const allPosts = async () => {
     page1.posts.forEach((post) => allData.push(post));
     page2.posts.forEach((post) => allData.push(post));
     page3.posts.forEach((post) => allData.push(post));
-    // allData.push(page2.posts);
-    // allData.push(page3.posts);
-    // {..., ...page2.posts, ...page3.posts};
+    localStorage.setItem("feed", JSON.stringify(allData));
     return allData;
   } catch (error) {
     console.error(error);

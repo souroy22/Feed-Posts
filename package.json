@@ -12,6 +12,7 @@
     "aos": "^3.0.0-beta.6",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.33",
+    "offline-alert": "^2.0.0",
     "react": "^17.0.2",
     "react-detect-offline": "^2.4.4",
     "react-dom": "^17.0.2",

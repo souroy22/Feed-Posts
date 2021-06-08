@@ -13,6 +13,7 @@ const App = () => {
     useContext(PostContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [dataPerPage, setdataPerPage] = useState(3);
+
   useEffect(() => {
     // console.log(posts);
   }, [filterdPosts, reload]);
@@ -27,7 +28,7 @@ const App = () => {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-  
+
   const filtered = (type, updown = 1) => {
     if (type === "like") {
       setFilterdPosts(
@@ -65,9 +66,18 @@ const App = () => {
 
   return (
     <div className="App">
+    
       <Offline>
-        <h1 style={{textAlign: "center", alignItems: "center", color: "red"}}>You are in offline Mode. Please Check your Internet</h1>
-
+        <h1
+          style={{
+            textAlign: "center",
+            alignItems: "center",
+            color: "red",
+          }}
+        >
+          You are in offline Mode. Please Check your Internet
+        </h1>
+        <DropDown filtered={filtered} sortIncDec={sortIncDec} />
         <Posts postsPerPage={currentPageData} />
         <Pagination
           dataPerPage={dataPerPage}
@@ -76,8 +86,8 @@ const App = () => {
           currentPage={currentPage}
         />
       </Offline>
+
       <Online>
-      
         <DropDown filtered={filtered} sortIncDec={sortIncDec} />
         {!posts?.length ? (
           <Loading />

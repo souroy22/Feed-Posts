@@ -66,7 +66,7 @@ const Post = ({
         <div className="card-body-left">
           <h5
             className="card-title font-weight-bold"
-            style={{ textAlign: "center", color: "#8D3DAF" }}
+            style={{ textAlign: "start", color: "#8D3DAF" }}
           >
             {event_name}
           </h5>
