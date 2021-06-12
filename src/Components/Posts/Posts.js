@@ -33,25 +33,30 @@ const Posts = ({ postsPerPage }) => {
       data-aos-delay="250"
     >
       <ModalContainer isOpen={isOpen} setIsOpen={setIsOpen} post={modelData} />
-      {postsPerPage?.map((post, index) => {
-        return (
-          <>
-            <Post
-              openModal={openModal}
-              key={index + Math.random() + Math.random()}
-              photoUrl={post?.thumbnail_image}
-              event_date={post?.event_date}
-              event_name={post?.event_name}
-              likes={post.likes}
-              shares={post.shares}
-              views={post.views}
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
-              post={post}
-            />
-          </>
-        );
-      })}
+      {postsPerPage?.length === 0 ? (
+        
+        <img src={"https://www.cloudconsult.ca/public/no-search-found.png"} style={{marginTop: "60px"}} />
+      ) : (
+        postsPerPage?.map((post, index) => {
+          return (
+            <>
+              <Post
+                openModal={openModal}
+                key={index}
+                photoUrl={post?.thumbnail_image}
+                event_date={post?.event_date}
+                event_name={post?.event_name}
+                likes={post.likes}
+                shares={post.shares}
+                views={post.views}
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+                post={post}
+              />
+            </>
+          );
+        })
+      )}
     </div>
   );
 };

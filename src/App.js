@@ -1,18 +1,20 @@
 import "./App.css";
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import { PostContext } from "./Context Api/Context";
 import Posts from "./Components/Posts/Posts";
 import Pagination from "./Components/Pagination/Pagination";
 import Loading from "./Components/Loading Screen/Loading";
 import DropDown from "./Components/DropDown Menu/DropDown";
 import { Offline, Online } from "react-detect-offline";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 const App = () => {
   const [posts, setPosts, filterdPosts, setFilterdPosts, reload, setReload] =
     useContext(PostContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [dataPerPage, setdataPerPage] = useState(3);
+  const [value, setValue] = useState("");
 
   useEffect(() => {
     // console.log(posts);
@@ -24,7 +26,7 @@ const App = () => {
     indexOfFirstData,
     indexOfLastData
   );
-
+  const inputFiled = useRef();
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -64,9 +66,27 @@ const App = () => {
     setReload(!reload);
   };
 
+  const onChange = (event) => {
+    setValue(event.target.value);
+    // console.log(event.target.value);
+  };
+
+  const submitFilter = (e) => {
+    e.preventDefault();
+    const val = inputFiled.current.value;
+    if (val == "") {
+      return;
+    }
+    setFilterdPosts(
+      posts.filter((post) =>
+        post?.event_name.toLowerCase().includes(val.toLowerCase())
+      )
+    );
+    inputFiled.current.value = "";
+  };
+
   return (
     <div className="App">
-    
       <Offline>
         <h1
           style={{
@@ -89,6 +109,13 @@ const App = () => {
 
       <Online>
         <DropDown filtered={filtered} sortIncDec={sortIncDec} />
+        <form className="form-container" onSubmit={submitFilter}>
+          <input ref={inputFiled} placeholder="search for post..." />
+          <h1>|</h1>
+          <button onClick={submitFilter}>
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
+        </form>
         {!posts?.length ? (
           <Loading />
         ) : (

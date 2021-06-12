@@ -68,7 +68,7 @@ const Post = ({
             className="card-title font-weight-bold"
             style={{ textAlign: "start", color: "#8D3DAF" }}
           >
-            {event_name}
+            {event_name.length > 13 ? event_name.slice(0, 12) + "..." : event_name}
           </h5>
           <p className="card-text">
             <Moment format="D MMM YYYY" filter={toUpperCaseFilter}>
@@ -77,7 +77,7 @@ const Post = ({
           </p>
         </div>
         <button
-          className="btn btn-sm btn-warning font-weight-bold card-body-right"
+          className="btn btn-sm btn-outline-warning font-weight-bold card-body-right"
           onClick={() => openModal(post)}
         >
           View
